@@ -17,41 +17,58 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
+    .container {
+      width: 60vw;          /* kello ja logo vievät 60% leveydestä */
+      max-width: 1152px;    /* 60% Full HD:stä */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
     .logo {
-      height: 15%;        /* logo 15% näytön korkeudesta */
-      max-height: 200px;  /* maksimikorkeus */
-      width: auto;        /* leveys suhteessa korkeuteen */
+      height: auto;
+      max-height: 200px;
+      width: 100%;          /* logo täyttää containerin leveyden */
+      object-fit: contain;
       margin-bottom: 20px;
     }
 
     .time {
-      font-weight: 500;             /* kevyt teksti */
-      font-size: 55vh;              /* 55% näytön korkeudesta, sopii 1080p */
+      font-weight: 500;
+      font-size: 55vh;      /* korkeus 55% näytöstä */
       line-height: 1;
       letter-spacing: 0.05em;
       text-align: center;
+      width: 100%;
     }
 
-    /* Pieniä näyttöjä varten */
+    /* Pienille näytöille */
     @media (max-width: 1920px), (max-height: 1080px) {
       .time {
-        font-size: 50vh;            /* pienempi fontti pienemmille näytöille */
+        font-size: 50vh;
       }
     }
 
     @media (max-width: 600px) {
+      .container {
+        width: 90vw;
+      }
       .logo {
-        height: 20%;
+        height: auto;
+        max-height: 150px;
       }
       .time {
-        font-size: 40vh;            /* pienille mobiilinäytöille */
+        font-size: 40vh;
       }
     }
   </style>
 </head>
 <body>
-  <img src="prassi-logo.png" alt="Prassi logo" class="logo">
-  <div class="time" id="clock">00:00:00</div>
+  <div class="container">
+    <img src="prassi-logo.png" alt="Prassi logo" class="logo">
+    <div class="time" id="clock">00:00:00</div>
+  </div>
 
   <script>
     function z(n) { return n < 10 ? '0' + n : n; }
