@@ -18,15 +18,15 @@
     }
 
     .logo {
-      width: 20%;          /* logo skaalautuu 20% näytön leveydestä */
-      max-width: 200px;    /* maksimikoko */
-      min-width: 100px;    /* minimikoko pienillä näytöillä */
+      height: 15%;       /* logo vie aina 15% ikkunan korkeudesta */
+      max-height: 200px; /* maksimikorkeus */
+      width: auto;       /* leveys skaalautuu automaattisesti suhteessa korkeuteen */
       margin-bottom: 20px;
     }
 
     .time {
-      font-weight: 500;                     /* hieman kevyempi teksti */
-      font-size: min(60vh, 90vw);           /* kello skaalautuu korkeuden ja leveyden mukaan */
+      font-weight: 500;                   /* hieman kevyempi teksti */
+      font-size: min(60vh, 90vw);         /* kello skaalautuu korkeuden ja leveyden mukaan */
       line-height: 1;
       letter-spacing: 0.05em;
       text-align: center;
@@ -35,7 +35,7 @@
     /* Pieniä näyttöjä varten */
     @media (max-width: 600px) {
       .logo {
-        width: 40%;    /* logo hieman suurempi pienen näytön mukaan */
+        height: 20%; /* hieman suurempi logo pienillä näytöillä */
       }
       .time {
         font-size: min(50vh, 90vw);  /* pienennetään kelloa pienillä näytöillä */
@@ -44,13 +44,15 @@
   </style>
 </head>
 <body>
+  <!-- Logo yläreunaan -->
   <img src="prassi-logo.png" alt="Prassi logo" class="logo">
 
+  <!-- Digitaalinen kello -->
   <div class="time" id="clock">00:00:00</div>
 
   <script>
-    function z(n){ return n<10?'0'+n:n; }
-    function update(){
+    function z(n) { return n < 10 ? '0' + n : n; }
+    function update() {
       const now = new Date();
       const t = z(now.getHours()) + ":" + z(now.getMinutes()) + ":" + z(now.getSeconds());
       document.getElementById("clock").textContent = t;
